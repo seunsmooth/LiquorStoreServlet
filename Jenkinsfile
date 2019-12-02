@@ -1,25 +1,19 @@
-781depipeline {
+pipeline {
     agent any
 
     stages {
          stage ('Checking Deploy tool and initial cleanup') {
              steps {
-                 sh '''
-                 mvn --version
-                 java -version
-                 git --version
-                 kubctl version --client=true
-                 '''
-          }
+                 sh 'mvn --version'
+                 sh 'java -version'
+                 sh ' git --version'
+                 sh 'rm -rf codebase || true' 
+             }
          }
 
-         stage ('build code ') {
-             steps {
-               sh '''
-               echo 'building code'
-               mvn clean build
-               '''
-        }
-       }
-     }
-}
+         stage ('pull down codbase') {
+             steps  {
+                 sh 'git clone https://github.com/shegoj/LiquorStoreServlet.git codebase'
+
+             }
+         }
