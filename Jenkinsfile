@@ -13,7 +13,7 @@ pipeline {
 
          stage ('pull down codbase') {
              steps  {
-                 sh 'git clone https://github.com/shegoj/LiquorStoreServlet.git codebase'
+                 sh 'git clone https://github.com/seunsmooth/LiquorStoreServlet.git codebase'
 
              }
          }
@@ -25,8 +25,8 @@ pipeline {
          stage ('deploy code to App Server') {
              steps  {
                  echo  'deployed'
-                 sh ' cp -iv /tmp/asiri.pem /tmp/jenkinskey2.pem || true && chmod 400  /tmp/jenkinskey2.pem'
-                 sh 'scp -i  /tmp/jenkinskey2.pem -o StrictHostKeyChecking=no codebase/target/SampleServlet.war  ec2-user@10.0.0.17:/var/lib/tomcat/webapps'
+                 sh ' cp -iv /tmp/asiri.pem /tmp/belgium2.pem || true && chmod 400  /tmp/belgium2.pem'
+                 sh 'scp -i  /tmp/belgium2.pem -o StrictHostKeyChecking=no codebase/target/SampleServlet.war  ec2-user@10.0.0.146:/var/lib/tomcat/webapps'
              }
         }
         stage ('Test code on App Server') {
