@@ -42,6 +42,7 @@ pipeline {
                  echo  'code tested'
              }
         }
+        //do some app test to make sure it work and then deploy to prod
         stage ('complete') {
              steps  {
                  echo  'complete'
