@@ -39,7 +39,7 @@ pipeline {
                 branch 'develop'
             }
              steps  {
-                 sh 'sleep 5000' 
+                 sleep 5000
                  sh 'curl  http://ec2-54-229-11-97.eu-west-1.compute.amazonaws.com/app1 | grep Landing'
                  echo  'code tested'
              }
